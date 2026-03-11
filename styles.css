@@ -162,6 +162,20 @@ body {
     background-color: #333; /* pressed state */
 }
 
+.download-button.tertiary {
+    background-color: transparent;
+    border: 1px solid #d4d2ca;
+    color: #333;
+}
+
+.download-button.tertiary:hover {
+    background-color: #d4d2ca;
+}
+
+.download-button.tertiary:active {
+    background-color: #d4d2ca;
+}
+
 /* ==========================================================================
    Floating page label (exercise helper)
    ========================================================================== */
