@@ -1,148 +1,183 @@
+/* ==========================================================================
+   Base / Reset
+   - Normalize browser defaults so spacing is predictable.
+   - `box-sizing: border-box` makes widths include padding/border.
+   ========================================================================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* remove default outer spacing */
+    padding: 0; /* remove default inner spacing */
+    box-sizing: border-box; /* easier sizing math for components */
 }
 
+/* ==========================================================================
+   Page layout
+   - Center the pricing cards on the page.
+   ========================================================================== */
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #f7f7f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* primary typeface + sensible fallbacks */
+    background-color: #f7f7f4; /* warm off-white background */
+    display: flex; /* enables easy centering */
+    justify-content: center; /* horizontal centering */
+    align-items: center; /* vertical centering */
+    min-height: 100vh; /* full viewport height */
+    padding: 20px; /* breathing room on small screens */
 }
 
+/* ==========================================================================
+   Cards grid / row
+   - Flex row that holds each plan card.
+   ========================================================================== */
 .cards-container {
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: flex-start;
+    display: flex; /* lay out cards in a row */
+    flex-direction: row; /* explicit row direction */
+    gap: 24px; /* space between cards */
+    flex-wrap: nowrap; /* prevent wrapping (keeps two-card layout) */
+    justify-content: center; /* center row within page */
+    align-items: flex-start; /* align cards to their top edge */
 }
 
+/* ==========================================================================
+   Card shell
+   - Column layout so the button can stick to the bottom.
+   ========================================================================== */
 .card {
-    display: flex;
-    flex-direction: column;
-    min-height: 380px;
-    background-color: #f2f1ed;
-    border-radius: 4px;
-    padding: 16px;
-    width: 320px;
-    flex-shrink: 0;
+    display: flex; /* enables top content + bottom CTA behavior */
+    flex-direction: column; /* stack sections vertically */
+    min-height: 380px; /* keeps cards visually balanced */
+    background-color: #f2f1ed; /* slightly darker than page bg */
+    border-radius: 4px; /* subtle rounding */
+    padding: 16px; /* internal spacing */
+    width: 320px; /* fixed card width */
+    flex-shrink: 0; /* avoid squishing cards in tight rows */
 }
 
+/* Top portion of the card (everything above the CTA button) */
 .card-top {
-    display: flex;
-    flex-direction: column;
+    display: flex; /* keep internal stacking consistent */
+    flex-direction: column; /* title → price → features */
 }
 
+/* Plan title (e.g., "Hobby", "Pro") */
 .card-title {
-    font-size: 22px;
-    line-height: 28px;
-    font-weight: 400;
-    color: #26251e;
-    margin-bottom: 8px;
+    font-size: 22px; /* headline size */
+    line-height: 28px; /* comfortable reading */
+    font-weight: 400; /* regular weight for a calm look */
+    color: #26251e; /* near-black with warm tint */
+    margin-bottom: 8px; /* space before price row */
 }
 
+/* Price row wrapper (amount + optional period) */
 .card-price {
-    font-size: 20px;
-    color: rgba(38, 37, 30, 0.5);
-    display: inline-flex;
-    align-items: baseline;
+    font-size: 20px; /* base size for the price line */
+    color: rgba(38, 37, 30, 0.5); /* muted label color */
+    display: inline-flex; /* keep amount + period on one line */
+    align-items: baseline; /* align `/mo.` to amount baseline */
 }
 
+/* Primary price value ("Free", "$20") */
 .card-price-amount {
-    font-size: 22px;
-    font-weight: 400;
-    color: rgba(38, 37, 30, 0.5);
+    font-size: 22px; /* slightly larger than surrounding text */
+    font-weight: 400; /* regular weight to match title style */
+    color: rgba(38, 37, 30, 0.5); /* same muted tone as price row */
 }
 
+/* Price period suffix ("/mo.") */
 .card-price-period {
-    font-size: 14px;
-    color: rgba(38, 37, 30, 0.5);
+    font-size: 14px; /* smaller secondary label */
+    color: rgba(38, 37, 30, 0.5); /* muted tone */
 }
 
+/* Container for "Includes" label + list */
 .card-content {
-    margin-bottom: 32px;
+    margin-bottom: 32px; /* space before CTA area */
 }
 
+/* The "Includes:" / "Everything in Hobby, plus:" line */
 .includes-text {
-    font-size: 16px;
-    color: rgba(38, 37, 30, 0.5);
-    margin: 16px 0px;
+    font-size: 16px; /* body size */
+    color: rgba(38, 37, 30, 0.5); /* muted helper text */
+    margin: 16px 0px; /* vertical spacing above/below */
 }
 
+/* Feature list reset */
 .features-list {
-    list-style: none;
-    padding: 0;
+    list-style: none; /* remove bullets (we use checkmarks) */
+    padding: 0; /* keep list aligned with content */
 }
 
+/* Each feature line: checkmark + text */
 .features-list li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-    font-size: 16px;
-    color: #26251e;
+    display: flex; /* place icon and text in a row */
+    align-items: center; /* vertically align icon with text */
+    margin-bottom: 8px; /* space between features */
+    font-size: 16px; /* body size */
+    color: #26251e; /* high-contrast body text */
 }
 
+/* Checkmark glyph styling */
 .checkmark {
-    color: #26251e;
-    font-size: 14px;
-    margin-right: 10px;
-    font-weight: 400;
+    color: #26251e; /* matches feature text */
+    font-size: 14px; /* slightly smaller than text */
+    margin-right: 10px; /* spacing between icon and label */
+    font-weight: 400; /* regular weight */
 }
 
+/* ==========================================================================
+   Buttons
+   - Base button style + variant modifiers.
+   ========================================================================== */
 .download-button {
-    margin-top: auto;
-    width: fit-content;
-    background-color: #e6e5e0;
-    border: none;
-    border-radius: 999px;
-    padding: 14px 24px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #333;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    margin-top: auto; /* pushes button to bottom of the card */
+    width: fit-content; /* shrink-wrap to text */
+    background-color: #e6e5e0; /* neutral button fill */
+    border: none; /* remove default button border */
+    border-radius: 999px; /* pill shape */
+    padding: 14px 24px; /* tappable target size */
+    font-size: 16px; /* readable label size */
+    font-weight: 500; /* medium emphasis */
+    color: #333; /* dark label color */
+    cursor: pointer; /* indicates interactivity */
+    transition: background-color 0.2s ease; /* subtle hover feedback */
 }
 
 .download-button:hover {
-    background-color: #D8D6CE;
+    background-color: #D8D6CE; /* slightly darker on hover */
 }
 
 .download-button:active {
-    background-color: #D8D6CE;
+    background-color: #D8D6CE; /* keep pressed state consistent */
 }
 
+/* Primary CTA variant (used on "Get Pro") */
 .download-button.primary {
-    background-color: #111;
-    color: #fff;
+    background-color: #111; /* high-contrast fill */
+    color: #fff; /* inverse text */
 }
 
 .download-button.primary:hover {
-    background-color: #333;
+    background-color: #333; /* lighten slightly on hover */
 }
 
 .download-button.primary:active {
-    background-color: #333;
+    background-color: #333; /* pressed state */
 }
 
+/* ==========================================================================
+   Floating page label (exercise helper)
+   ========================================================================== */
 .page-label {
-    position: fixed;
-    top: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 14px;
-    color: #666;
-    background: #fff;
-    padding: 8px 16px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: fixed; /* stays visible while scrolling */
+    top: 16px; /* distance from top edge */
+    left: 50%; /* start centering from midpoint */
+    transform: translateX(-50%); /* finish centering */
+    font-size: 14px; /* small badge text */
+    color: #666; /* muted label */
+    background: #fff; /* white chip */
+    padding: 8px 16px; /* chip spacing */
+    border-radius: 8px; /* rounded chip corners */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* subtle elevation */
 }
 
 .page-label strong {
-    color: #333;
+    color: #333; /* emphasize the "HTML version" part */
 }
